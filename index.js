@@ -36,12 +36,14 @@ console.log(newArray[4]()); // should return 50
 
 //3
 function sum() {
-  let summa = 0;
-  for (let i in arguments)
-    if(!isNaN(Number(arguments[i])))
-       summa += arguments[i];
-  return summa;
-}
+  function recSum(args, i) {
+    if (i < args.length) {
+      return args[i] + recSum(args, i + 1);
+    }
+    return 0;
+  }
+  return recSum(arguments, 0);
+};
 
 console.log(sum(1,3,5,7)); //should return 16
 
